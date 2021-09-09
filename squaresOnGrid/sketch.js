@@ -1,17 +1,19 @@
 let bg=32;
 let fg=0;
+let XSTOP=false;
+let YSTOP=false;
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(800, 800);
   ellipseMode(CORNER);
   rectMode(CORNER);
+  colorMode(HSL,255,255,255,255);
 }
 
 function draw() {
   background(bg);
 
   let border=25;
-
   let w=0;
   let h=0;
   
@@ -22,40 +24,43 @@ function draw() {
   let y = border;
 
   noFill();
-  //stroke(0, 64);
-  noStroke();
+  stroke(fg, 64);
+  //noStroke();
   let count=0;
   
-  while (y < maxY) {
-    h = int(random(maxY/25));
+  while (y < maxY && !YSTOP) {
+    h = (random(5,maxY/10));
 
     if (y+h > maxY) {
-      h = maxY-y;
-      if (h<=1) break;
+      h = maxY-y; 
+      YSTOP = true;
     }
     
-    while (x < maxX) {
+    while (x < maxX && !XSTOP) {
       count++;
-      w = int(random(maxX/5));
+      w = (random(5,maxX/10));
 
       if (x+w > maxX) {
         w = maxX-x;
-        if (w<=1) { 
-          //console.log("breaking");
-          break;
-        }
+        XSTOP = true;
+
       }
 
-      fill(random(255), 32);
+      fill(random(255),random(64,96));
+      //fill(random(255), random(255), random(255),32);
       rect(x, y, w, h);
-      
-      x += int(random(w));
-      
+       
+      x += random(0.75*w,w); // move a bit x-wise, but ensure overlap
     }
-
+    XSTOP=false;
     x = border;
-    y += int(random(h));
+    y += random(0.75*h,h); // move a bit y-wise, but ensure overlap
   }
+  YSTOP=false;
   noLoop();
   console.log("stopped after", count);
+}
+
+function mouseClicked() {
+  redraw();
 }
