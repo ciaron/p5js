@@ -1,11 +1,14 @@
+let bg=32;
+let fg=0;
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1000, 1000);
   ellipseMode(CORNER);
   rectMode(CORNER);
 }
 
 function draw() {
-  background(220);
+  background(bg);
 
   let border=25;
 
@@ -24,7 +27,7 @@ function draw() {
   let count=0;
   
   while (y < maxY) {
-    h = int(random(maxY/2));
+    h = int(random(maxY/25));
 
     if (y+h > maxY) {
       h = maxY-y;
@@ -33,7 +36,7 @@ function draw() {
     
     while (x < maxX) {
       count++;
-      w = int(random(maxX/2));
+      w = int(random(maxX/5));
 
       if (x+w > maxX) {
         w = maxX-x;
