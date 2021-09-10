@@ -72,7 +72,8 @@ function draw() {
   curveVertex(v3.x, v3.y);
 
   endShape();
-
+  stroke('red');
+  ellipse(v2.x, v2.y, 12, 12);
   noLoop();
 }
 
