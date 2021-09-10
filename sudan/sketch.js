@@ -12,11 +12,11 @@ function setup() {
   va = []
 
   // a rectangle
-  va.push(createVector(100, 100));
-  va.push(createVector(700, 100));
-  va.push(createVector(700, 700));
-  va.push(createVector(100, 700));
-  va.push(createVector(100, 100)); // back to the start
+  va.push(createVector(110, 105));
+  va.push(createVector(680, 94));
+  va.push(createVector(701, 678));
+  va.push(createVector(88, 709));
+  va.push(createVector(110, 105)); // back to the start
 
   // square with a piece missing
   // va.push(createVector(100, 350));
