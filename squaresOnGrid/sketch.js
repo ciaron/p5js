@@ -1,13 +1,13 @@
-let bg=32;
+let bg=255;
 let fg=0;
 let XSTOP=false;
 let YSTOP=false;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(3000, 3000);
   ellipseMode(CORNER);
   rectMode(CORNER);
-  colorMode(HSL,255,255,255,255);
+  colorMode(HSB,255,255,255,255);
 }
 
 function draw() {
@@ -24,7 +24,7 @@ function draw() {
   let y = border;
 
   noFill();
-  stroke(fg, 64);
+  stroke(fg, 32);
   //noStroke();
   let count=0;
   
@@ -46,8 +46,9 @@ function draw() {
 
       }
 
-      fill(random(255),random(64,96));
-      //fill(random(255), random(255), random(255),32);
+      //fill(random(fg),random(128));  // mono
+      //fill(0, 0, random(255), random(128));
+      fill(random(255), random(255), random(255), random(128));
       rect(x, y, w, h);
        
       x += random(0.75*w,w); // move a bit x-wise, but ensure overlap
@@ -64,3 +65,4 @@ function draw() {
 function mouseClicked() {
   redraw();
 }
+
