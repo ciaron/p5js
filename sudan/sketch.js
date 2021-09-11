@@ -8,7 +8,7 @@ let bg='white'
 let fg='black'
 
 function setup() {
-  let c = createCanvas(800, 800);
+  let c = createCanvas(3000, 3000);
   va = []
 
   // a rectangle
@@ -35,9 +35,41 @@ function setup() {
   
 }
 
+function getShape() {
+  va = []
+
+  // a rectangle
+  let min = -20;
+  let max = 20;
+  p = random(min, max); q=random(min, max);
+  va.push(createVector(100+p, 100+q));
+  p = random(min, max); q=random(min, max);
+  va.push(createVector(700+p, 100+q));
+  p = random(min, max); q=random(min, max);
+  va.push(createVector(700+p, 700+q));
+  p = random(min, max); q=random(min, max);
+  va.push(createVector(100+p, 700+q));
+  p = random(min, max); q=random(min, max);
+  va.push(createVector(100+p, 100+q)); // back to the start
+
+  return va;
+
+}
+
 function draw() {
   background(bg);
 
+  // for (let y=0; y<height-100; y+=random(100,200)) {
+  //   for (let x=0; x<width-100; x+=random(100,200)){
+  //     push();
+  //     translate(x+10, y+10);
+  //     //scale(0.1);
+  //     shp = getShape();
+  //     drawShape(shp);
+  //     pop();
+  //   }
+  // }
+  va=getShape();
   drawShape(va);
   
   noLoop();
